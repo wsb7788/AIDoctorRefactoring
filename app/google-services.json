@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "390925245148",
+    "project_id": "ai-doctor-9674c",
+    "storage_bucket": "ai-doctor-9674c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390925245148:android:b1a564d6b55529b6e6f219",
+        "android_client_info": {
+          "package_name": "com.project.aidoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390925245148-bqem8ojlil705sqgtg3k881p19kgcfal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3bOD_pHpB_GCeEPMy2GA7NtbhDinDwg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390925245148-bqem8ojlil705sqgtg3k881p19kgcfal.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
