@@ -8,7 +8,9 @@ import com.google.android.material.navigation.NavigationBarView
 import com.project.aidoctor.R
 import com.project.aidoctor.databinding.ActivityMainBinding
 import com.project.aidoctor.ui.BaseActivity
+import com.project.aidoctor.ui.chat.ChatFragment
 import com.project.aidoctor.ui.home.HomeFragment
+import com.project.aidoctor.ui.profile.ProfileFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
@@ -57,7 +59,7 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
     private fun showTabProfile() {
         binding.bnv.selectedItemId = R.id.menu_profile
         val transaction = manager.beginTransaction()
-        val fragment = HomeFragment()
+        val fragment = ProfileFragment()
         transaction.replace(binding.fragment.id, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
@@ -65,7 +67,7 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
     private fun showTabChat() {
         binding.bnv.selectedItemId = R.id.menu_chat
         val transaction = manager.beginTransaction()
-        val fragment = HomeFragment()
+        val fragment = ChatFragment()
         transaction.replace(binding.fragment.id, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
