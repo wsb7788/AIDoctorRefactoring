@@ -1,5 +1,6 @@
 package com.project.aidoctor.di
 
+import com.project.aidoctor.ui.chat.ChatViewModel
 import com.project.aidoctor.ui.login.LoginViewModel
 import com.project.aidoctor.ui.main.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -10,4 +11,5 @@ val viewModelModule = module {
 
     viewModel { LoginViewModel(get(), get()) }
     viewModel { MainViewModel() }
+    viewModel { ChatViewModel() }
 }

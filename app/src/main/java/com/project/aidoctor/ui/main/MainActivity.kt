@@ -9,11 +9,6 @@ import com.project.aidoctor.R
 import com.project.aidoctor.databinding.ActivityMainBinding
 import com.project.aidoctor.ui.BaseActivity
 import com.project.aidoctor.ui.home.HomeFragment
-import com.project.faily.ui.calendar.CalendarFragment
-import com.project.faily.ui.gallery.GalleryFragment
-import com.project.faily.ui.home.HomeFragment
-import com.project.faily.ui.question.QuestionFragment
-import com.project.faily.ui.setting.SettingFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
