@@ -1,7 +1,6 @@
-package com.project.aidoctor.data.login
+package com.project.aidoctor.data.remote.login
 
 import com.project.aidoctor.data.entities.User
-import com.project.aidoctor.data.login.LoginResponse
 
 import retrofit2.Response
 import retrofit2.http.*

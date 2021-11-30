@@ -1,7 +1,7 @@
 package com.project.faily.di
 
 
-import com.project.aidoctor.data.login.LoginService
+import com.project.aidoctor.data.remote.login.LoginService
 import com.project.aidoctor.util.SharedPreferencesManager
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

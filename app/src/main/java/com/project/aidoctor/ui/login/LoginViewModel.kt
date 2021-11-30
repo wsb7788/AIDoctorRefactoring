@@ -8,7 +8,7 @@ import android.text.SpannableStringBuilder
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.aidoctor.data.entities.User
-import com.project.aidoctor.data.login.LoginListener
+import com.project.aidoctor.data.remote.login.LoginListener
 import com.project.aidoctor.data.repository.login.LoginRepository
 import com.project.aidoctor.util.Coroutines
 import com.project.aidoctor.util.SharedPreferencesManager

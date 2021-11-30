@@ -1,13 +1,12 @@
 package com.project.aidoctor.ui.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.text.SpannableStringBuilder
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.project.aidoctor.R
-import com.project.aidoctor.data.login.LoginListener
+import com.project.aidoctor.data.remote.login.LoginListener
 import com.project.aidoctor.databinding.ActivityLoginBinding
 import com.project.aidoctor.ui.BaseActivity
 import com.project.aidoctor.util.toast
