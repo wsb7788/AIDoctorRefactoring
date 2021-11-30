@@ -26,7 +26,6 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         binding.viewModel = viewModel
 
 
-        binding.bnv.menu.getItem(2).isEnabled = false
         showTabHome()
 
 
@@ -49,7 +48,6 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
     }
 
     private fun showTabHome() {
-        binding.bnv.selectedItemId = R.id.menu_home
         val transaction = manager.beginTransaction()
         val fragment = HomeFragment()
         transaction.replace(binding.fragment.id, fragment)
@@ -57,7 +55,6 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         transaction.commit()
     }
     private fun showTabProfile() {
-        binding.bnv.selectedItemId = R.id.menu_profile
         val transaction = manager.beginTransaction()
         val fragment = ProfileFragment()
         transaction.replace(binding.fragment.id, fragment)
@@ -65,7 +62,7 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         transaction.commit()
     }
     private fun showTabChat() {
-        binding.bnv.selectedItemId = R.id.menu_chat
+
         val transaction = manager.beginTransaction()
         val fragment = ChatFragment()
         transaction.replace(binding.fragment.id, fragment)

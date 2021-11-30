@@ -1,5 +1,6 @@
 package com.project.aidoctor.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.text.SpannableStringBuilder
@@ -9,6 +10,7 @@ import com.project.aidoctor.R
 import com.project.aidoctor.data.remote.login.LoginListener
 import com.project.aidoctor.databinding.ActivityLoginBinding
 import com.project.aidoctor.ui.BaseActivity
+import com.project.aidoctor.ui.main.MainActivity
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,7 +32,7 @@ class LoginActivity : BaseActivity(), LoginListener {
         binding.ivPassword.setOnClickListener(this)
         binding.ivEmail.setOnClickListener(this)
         binding.button.setOnClickListener(this)
-        binding.btnBack.setOnClickListener(this)
+        //binding.btnBack.setOnClickListener(this)
     }
 
     private fun idObserve() {
@@ -60,9 +62,15 @@ class LoginActivity : BaseActivity(), LoginListener {
         when(v){
             binding.ivPassword-> viewModel.showPw()
             binding.ivEmail -> viewModel.emailBlankCheck()
-            binding.button -> viewModel.checkUser()
-            binding.btnBack -> onBackPressed()
+            binding.button -> startMain()
+            //binding.btnBack -> onBackPressed()
         }
+    }
+
+    private fun startMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun clearEmail(editable: SpannableStringBuilder) {
