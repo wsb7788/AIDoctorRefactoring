@@ -1,5 +1,6 @@
 package com.project.aidoctor.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -8,7 +9,7 @@ import com.google.android.material.navigation.NavigationBarView
 import com.project.aidoctor.R
 import com.project.aidoctor.databinding.ActivityMainBinding
 import com.project.aidoctor.ui.BaseActivity
-import com.project.aidoctor.ui.chat.ChatFragment
+import com.project.aidoctor.ui.chat.ChatActivity
 import com.project.aidoctor.ui.home.HomeFragment
 import com.project.aidoctor.ui.profile.ProfileFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,22 +28,28 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
 
 
         showTabHome()
-
-
+        binding.bnv.menu.getItem(1).isEnabled = false
         binding.bnv.setOnItemSelectedListener(this)
+        binding.btnChat.setOnClickListener(this)
 
     }
 
-
     override fun onClick(v: View?) {
 
+        when(v){
+            binding.btnChat -> startChat()
+        }
+    }
+
+    private fun startChat() {
+        val intent = Intent(this, ChatActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_home -> showTabHome()
             R.id.menu_profile -> showTabProfile()
-            R.id.menu_chat -> showTabChat()
         }
         return true
     }
@@ -57,14 +64,6 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
     private fun showTabProfile() {
         val transaction = manager.beginTransaction()
         val fragment = ProfileFragment()
-        transaction.replace(binding.fragment.id, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
-    private fun showTabChat() {
-
-        val transaction = manager.beginTransaction()
-        val fragment = ChatFragment()
         transaction.replace(binding.fragment.id, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
