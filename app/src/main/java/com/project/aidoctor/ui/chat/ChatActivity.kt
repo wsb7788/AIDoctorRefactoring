@@ -26,8 +26,14 @@ class ChatActivity : BaseActivity() {
         binding.viewModel = viewModel
 
 
+        binding.btnBack.setOnClickListener(this)
     }
 
+    override fun onClick(v: View?) {
+        when(v){
+            binding.btnBack -> onBackPressed()
+        }
+    }
 
 
 }
