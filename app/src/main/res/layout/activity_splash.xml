@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="" />
+            type="com.project.aidoctor.ui.splash.SplashViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
