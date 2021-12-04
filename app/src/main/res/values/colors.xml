@@ -11,5 +11,9 @@
     <color name="primary_2">#3b5a89</color>
     <color name="grey_3">#767676</color>
     <color name="border_color">#4c3b5a89</color>
+    <color name="gray_1">#eeeeee</color>
+    <color name="gray_4">#585757</color>
+    <color name="chatbot_button">#4c969696</color>
+    <color name="red">#e54141</color>
 
 </resources>
