@@ -5,13 +5,15 @@
     <item
         android:id="@+id/menu_home"
         android:title="home"
+        android:icon="@drawable/ic_home_checked"
         />
     <item
         android:id="@+id/chat"
-
+        android:title=""
         />
     <item
         android:id="@+id/menu_profile"
+        android:icon="@drawable/ic_setting"
         android:title="profile"/>
 
 </menu>
