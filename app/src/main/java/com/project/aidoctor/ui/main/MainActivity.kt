@@ -55,6 +55,8 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
     }
 
     private fun showTabHome() {
+        binding.bnv.menu.getItem(0).setIcon(R.drawable.ic_home_checked)
+        binding.bnv.menu.getItem(2).setIcon(R.drawable.ic_setting)
         val transaction = manager.beginTransaction()
         val fragment = HomeFragment()
         transaction.replace(binding.fragment.id, fragment)
@@ -62,6 +64,8 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         transaction.commit()
     }
     private fun showTabProfile() {
+        binding.bnv.menu.getItem(0).setIcon(R.drawable.ic_home)
+        binding.bnv.menu.getItem(2).setIcon(R.drawable.ic_setting_checked)
         val transaction = manager.beginTransaction()
         val fragment = ProfileFragment()
         transaction.replace(binding.fragment.id, fragment)

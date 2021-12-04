@@ -39,9 +39,11 @@
             app:labelVisibilityMode="unlabeled"
             app:menu="@menu/menu_navigation"
             app:itemIconSize="50dp"
+            app:itemIconTint="@drawable/bnv_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
            />
 
 
