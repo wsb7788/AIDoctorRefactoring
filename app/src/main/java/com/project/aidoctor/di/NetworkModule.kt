@@ -47,6 +47,7 @@ val networkModule: Module = module {
         .build()
 
 
+
     fun provideLoginService(retrofit: Retrofit): LoginService =
         retrofit.create(LoginService::class.java)
     fun provideHomeService(retrofit: Retrofit): HomeService =
