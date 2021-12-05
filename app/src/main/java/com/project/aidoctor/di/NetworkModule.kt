@@ -1,6 +1,7 @@
 package com.project.faily.di
 
 
+import com.project.aidoctor.data.remote.home.HomeService
 import com.project.aidoctor.data.remote.login.LoginService
 import com.project.aidoctor.util.SharedPreferencesManager
 import okhttp3.Interceptor
@@ -13,13 +14,13 @@ import java.util.concurrent.TimeUnit
 
 
 const val PRODUCTION_URL = "http://13.209.10.30:3000/"
-const val TEST_URL = "http://3.134.232.146:8080/"
+const val TEST_URL = "http://3.134.232.146:8000/"
 private val base_url: String = TEST_URL
 
 fun getBaseUrl() = base_url
 
 val networkModule: Module = module {
-    fun provideHeaderInterceptor(sharedPreferenceManager: SharedPreferencesManager) =
+/*    fun provideHeaderInterceptor(sharedPreferenceManager: SharedPreferencesManager) =
         Interceptor { chain ->
             val request = chain.request().newBuilder()
                 .addHeader("jwt_token", sharedPreferenceManager.getJwtToken())
@@ -39,19 +40,27 @@ val networkModule: Module = module {
         .baseUrl(getBaseUrl())
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
+        .build()*/
+    fun provideRetrofit():Retrofit = Retrofit.Builder()
+        .baseUrl(getBaseUrl())
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
-
 
 
     fun provideLoginService(retrofit: Retrofit): LoginService =
         retrofit.create(LoginService::class.java)
+    fun provideHomeService(retrofit: Retrofit): HomeService =
+        retrofit.create(HomeService::class.java)
 
-    single { provideHeaderInterceptor(get()) }
+   /* single { provideHeaderInterceptor(get()) }
     single { provideOkHttpClient(get()) }
-    single { provideRetrofit(get()) }
+    single { provideRetrofit(get()) }*/
+
+    single { provideRetrofit() }
 
 
     single { provideLoginService(get()) }
+    single { provideHomeService(get()) }
 
 }
 

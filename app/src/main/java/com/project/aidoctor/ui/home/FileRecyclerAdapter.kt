@@ -23,4 +23,7 @@ class FileRecyclerAdapter:RecyclerView.Adapter<FileViewHolder>() {
     }
 
     override fun getItemCount(): Int = modelList.size
+    fun clearList() {
+        this.modelList.clear()
+    }
 }

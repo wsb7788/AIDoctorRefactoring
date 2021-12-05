@@ -11,7 +11,7 @@ import com.project.aidoctor.databinding.FragmentProfileBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ProfileFragment : Fragment(), HomeListener {
+class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
@@ -25,7 +25,6 @@ class ProfileFragment : Fragment(), HomeListener {
        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        viewModel.homeListener = this
 
         return binding.root
     }

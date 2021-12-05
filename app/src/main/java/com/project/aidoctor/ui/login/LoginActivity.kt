@@ -72,7 +72,7 @@ class LoginActivity : BaseActivity(), LoginListener {
         when(v){
             binding.ivPassword-> viewModel.showPw()
             binding.ivEmail -> viewModel.emailBlankCheck()
-            binding.button -> onStartMain()
+            binding.button -> viewModel.startLogin()
 
         }
     }
