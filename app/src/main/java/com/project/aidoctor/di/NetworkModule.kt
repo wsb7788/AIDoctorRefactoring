@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 
 
 const val PRODUCTION_URL = "http://13.209.10.30:3000/"
-const val TEST_URL = "http://3.34.242.198:8080/"
+const val TEST_URL = "http://3.134.232.146:8080/"
 private val base_url: String = TEST_URL
 
 fun getBaseUrl() = base_url

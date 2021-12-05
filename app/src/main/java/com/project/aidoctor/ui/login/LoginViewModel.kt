@@ -76,7 +76,7 @@ class LoginViewModel(private val repository: LoginRepository, private val shared
         startLogin()
     }
 
-    private fun startLogin() {
+    fun startLogin() {
 
         Coroutines.main {
 
@@ -84,16 +84,10 @@ class LoginViewModel(private val repository: LoginRepository, private val shared
                 val email = email.value.toString()
                 val pw = pw.value.toString()
 
-                val loginResponse = repository.login(User(user_email = email, user_pw = pw))
+                val loginResponse = repository.login(User(userName = email, password = pw))
 
                 if(loginResponse.isSuccess){
-                    sharedPreferencesManager.saveJwtToken(loginResponse.jwt_token)
-                    if(loginResponse.group_code.isNotEmpty()){
-                        sharedPreferencesManager.saveChatCode(loginResponse.group_code)
-                        loginListener!!.onStartMain()
-                        return@main
-                    }
-                    loginListener!!.onStartTutorial()
+                    loginListener!!.onStartMain()
                     return@main
                 }
                 loginListener!!.onLoginFailure(loginResponse.message)

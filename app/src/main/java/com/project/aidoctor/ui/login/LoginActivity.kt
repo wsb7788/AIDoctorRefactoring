@@ -72,12 +72,12 @@ class LoginActivity : BaseActivity(), LoginListener {
         when(v){
             binding.ivPassword-> viewModel.showPw()
             binding.ivEmail -> viewModel.emailBlankCheck()
-            binding.button -> startMain()
+            binding.button -> onStartMain()
 
         }
     }
 
-    private fun startMain() {
+    override fun onStartMain() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
@@ -99,14 +99,4 @@ class LoginActivity : BaseActivity(), LoginListener {
 
     }
 
-    override fun onStartMain() {
-   /*     val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()*/
-    }
-    override fun onStartTutorial() {
-        /*val intent = Intent(this, TutorialActivity::class.java)
-        startActivity(intent)
-        finish()*/
-    }
 }
