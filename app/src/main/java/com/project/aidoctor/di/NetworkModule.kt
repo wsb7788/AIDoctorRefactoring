@@ -36,6 +36,7 @@ val networkModule: Module = module {
         .addInterceptor(headerInterceptor)
         .build()
 
+
     fun provideRetrofit(okHttpClient: OkHttpClient):Retrofit = Retrofit.Builder()
         .baseUrl(getBaseUrl())
         .addConverterFactory(GsonConverterFactory.create())
