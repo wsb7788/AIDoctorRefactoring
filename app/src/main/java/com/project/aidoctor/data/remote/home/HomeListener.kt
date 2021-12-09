@@ -7,5 +7,6 @@ interface HomeListener {
 
     fun onFailure(message: String)
     fun onDiseaseLoad(results: ArrayList<Disease>)
+    fun onCovidLoad(result: Int)
 
 }

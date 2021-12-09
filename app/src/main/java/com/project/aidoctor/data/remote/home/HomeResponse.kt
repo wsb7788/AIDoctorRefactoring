@@ -8,6 +8,12 @@ data class DiseaseResponse(
     val code: Int,
     val message: String,
     val results: ArrayList<Disease>
-    )
+)
+data class CovidResponse(
+    val isSuccess:Boolean,
+    val code: Int,
+    val message: String,
+    val results: Int
+)
 
 

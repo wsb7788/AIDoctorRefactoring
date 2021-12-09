@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.aidoctor.data.entities.Disease
 import com.project.aidoctor.data.remote.home.HomeListener
 import com.project.aidoctor.databinding.FragmentHomeBinding
+import com.project.aidoctor.ui.BaseFragment
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class HomeFragment : Fragment(), HomeListener {
+class HomeFragment : BaseFragment(), HomeListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -35,8 +36,16 @@ class HomeFragment : Fragment(), HomeListener {
 
         recyclerInit()
         viewModel.loadDisease()
+        viewModel.loadCovid()
 
+        binding.btnRefresh.setOnClickListener(this)
         return binding.root
+    }
+
+    override fun onClick(v: View?) {
+        when(v){
+            binding.btnRefresh -> viewModel.loadCovid()
+        }
     }
 
     private fun recyclerInit() {
@@ -75,6 +84,10 @@ class HomeFragment : Fragment(), HomeListener {
         fileRecyclerAdapter.clearList()
         fileRecyclerAdapter.submitList(model)
         fileRecyclerAdapter.notifyDataSetChanged()
+    }
+
+    override fun onCovidLoad(result: Int) {
+        binding.tvCorona.text = result.toString()
     }
 
 

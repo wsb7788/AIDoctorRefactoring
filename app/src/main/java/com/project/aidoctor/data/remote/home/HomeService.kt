@@ -10,4 +10,7 @@ interface HomeService {
     suspend fun disease(
     ): Response<DiseaseResponse>
 
+    @GET("/api/covid")
+    suspend fun covid(
+    ): Response<CovidResponse>
 }
