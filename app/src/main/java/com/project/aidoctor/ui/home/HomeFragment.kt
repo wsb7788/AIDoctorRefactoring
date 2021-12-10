@@ -137,7 +137,7 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
         val model = ArrayList<HospitalModel>()
 
         for(i in 0 until results.size){
-            model.add(HospitalModel(0,results[i].className,results[i].name,results[i].addr,results[i].phone,results[i].xPos.toFloat(),results[i].yPos.toFloat()))
+            model.add(HospitalModel(0,results[i].className,results[i].name,results[i].addr,results[i].phone,results[i].xPos.toFloat(),results[i].yPos.toFloat(),results[i].hospUrl))
         }
         hospitalRecyclerAdapter.clearList()
         hospitalRecyclerAdapter.submitList(model)

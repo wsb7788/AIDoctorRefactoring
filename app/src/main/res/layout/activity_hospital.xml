@@ -41,12 +41,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
-            android:text="#asdfsdf#fdfasdf"
+            android:text="홈페이지 : "
             android:textColor="#6da2ed"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/tv_name"
             app:layout_constraintTop_toBottomOf="@id/tv_name" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_url"
+            app:layout_constraintStart_toEndOf="@id/tv_hash"
+            app:layout_constraintTop_toTopOf="@id/tv_hash"
+            android:textColor="#A4C5F4"
+            android:textSize="14sp" />
 
         <ImageView
             android:layout_width="wrap_content"

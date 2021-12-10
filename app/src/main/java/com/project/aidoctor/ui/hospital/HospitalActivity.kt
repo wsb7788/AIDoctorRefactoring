@@ -37,7 +37,11 @@ class HospitalActivity : BaseActivity() {
         binding.tvName.text = item.name
         binding.tvCall.text = item.call
         binding.tvLocation.text = item.location
-        binding.tvHash.text = "#"+item.title
+        if(item.url.isNullOrEmpty())
+            binding.tvUrl.text = "정보없음"
+        else
+            binding.tvUrl.text = item.url
+
     }
 
     override fun onClick(v: View?) {
