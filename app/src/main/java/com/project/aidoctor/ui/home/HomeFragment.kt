@@ -35,7 +35,8 @@ class HomeFragment : BaseFragment(), HomeListener {
     lateinit var hospitalRecyclerAdapter: HospitalRecyclerAdapter
     lateinit var fileRecyclerAdapter: FileRecyclerAdapter
 
-
+    var locationManager: LocationManager? = null
+    var locationListener: LocationListener? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,8 +59,9 @@ class HomeFragment : BaseFragment(), HomeListener {
         var lat = 0.0
         var lng = 0.0
         if(checkLocationPermission()){
-            val locationManager= activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val locationListener = object : LocationListener {
+            locationManager= activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+            val userLocation:Location? = locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            /*locationListener = object : LocationListener {
                 override fun onLocationChanged(location: Location) {
                     if (location != null) {
                         lat = location.latitude
@@ -73,11 +75,13 @@ class HomeFragment : BaseFragment(), HomeListener {
                 override fun onProviderDisabled(provider: String) {}
             }
             locationManager!!.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER,
+                LocationManager.NETWORK_PROVIDER,
                 3000L,
                 30f,
-                locationListener
-            )
+                locationListener!!
+            )*/
+            lat = userLocation!!.latitude
+            lng = userLocation!!.longitude
             viewModel.loadHospital(lat.toFloat(),lng.toFloat())
         /*locationManager.update
             val userLocation = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
