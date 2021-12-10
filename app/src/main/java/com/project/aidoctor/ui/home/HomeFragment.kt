@@ -21,11 +21,12 @@ import com.project.aidoctor.data.entities.Hospital
 import com.project.aidoctor.data.remote.home.HomeListener
 import com.project.aidoctor.databinding.FragmentHomeBinding
 import com.project.aidoctor.ui.BaseFragment
+import com.project.aidoctor.ui.main.MainActivity
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class HomeFragment : BaseFragment(), HomeListener {
+class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItemClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -37,6 +38,8 @@ class HomeFragment : BaseFragment(), HomeListener {
 
     var locationManager: LocationManager? = null
     var locationListener: LocationListener? = null
+
+    var mainActivity:MainActivity? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,6 +56,11 @@ class HomeFragment : BaseFragment(), HomeListener {
         getLocation()
         binding.btnRefresh.setOnClickListener(this)
         return binding.root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
     }
 
     private fun getLocation() {
@@ -129,6 +137,12 @@ class HomeFragment : BaseFragment(), HomeListener {
         hospitalRecyclerAdapter.clearList()
         hospitalRecyclerAdapter.submitList(model)
         hospitalRecyclerAdapter.notifyDataSetChanged()
+    }
+
+    override fun onClick(v: View, position: Int) {
+        val item = hospitalRecyclerAdapter.getItemContent(position)
+        mainActivity!!.openFragment()
+        mainActivity!!.deliveryItem(item)
     }
 
 

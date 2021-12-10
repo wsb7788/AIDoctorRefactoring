@@ -33,5 +33,9 @@ class HospitalFragment : BaseFragment() {
         return binding.root
     }
 
+    fun setContent() {
+
+    }
+
 
 }

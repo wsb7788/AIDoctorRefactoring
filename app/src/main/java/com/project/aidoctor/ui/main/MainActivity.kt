@@ -11,6 +11,8 @@ import com.project.aidoctor.databinding.ActivityMainBinding
 import com.project.aidoctor.ui.BaseActivity
 import com.project.aidoctor.ui.chat.ChatActivity
 import com.project.aidoctor.ui.home.HomeFragment
+import com.project.aidoctor.ui.home.HospitalModel
+import com.project.aidoctor.ui.hospital.HospitalFragment
 import com.project.aidoctor.ui.profile.ProfileFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -73,7 +75,15 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         transaction.commit()
     }
 
+    fun openFragment(){
+        val transaction = manager.beginTransaction()
+        transaction.replace(binding.fragment.id,HospitalFragment())
+        transaction.commit()
+    }
 
+    fun deliveryItem(item: HospitalModel) {
+        HospitalFragment().setContent()
+    }
 
 
 }
