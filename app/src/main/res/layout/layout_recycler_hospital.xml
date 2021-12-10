@@ -76,6 +76,7 @@
         app:layout_constraintBottom_toBottomOf="@id/iv_location"
         app:layout_constraintEnd_toStartOf="@id/btn_more"/>
     <TextView
+        android:id="@+id/tv_location"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textStyle="bold"

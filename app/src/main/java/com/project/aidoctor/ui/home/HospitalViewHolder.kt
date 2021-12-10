@@ -8,5 +8,8 @@ class HospitalViewHolder(val binding: LayoutRecyclerHospitalBinding): RecyclerVi
 
     fun bind(hospitalModel: HospitalModel){
 
+        binding.tvTitle.text = hospitalModel.title
+        binding.tvName.text = hospitalModel.name
+        binding.tvLocation.text = hospitalModel.location
     }
 }

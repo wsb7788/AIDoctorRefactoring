@@ -61,32 +61,12 @@ class HomeFragment : BaseFragment(), HomeListener {
         if(checkLocationPermission()){
             locationManager= activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager?
             val userLocation:Location? = locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-            /*locationListener = object : LocationListener {
-                override fun onLocationChanged(location: Location) {
-                    if (location != null) {
-                        lat = location.latitude
-                        lng = location.longitude
 
-                    }
-                }
-
-                override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
-                override fun onProviderEnabled(provider: String) {}
-                override fun onProviderDisabled(provider: String) {}
-            }
-            locationManager!!.requestLocationUpdates(
-                LocationManager.NETWORK_PROVIDER,
-                3000L,
-                30f,
-                locationListener!!
-            )*/
             lat = userLocation!!.latitude
             lng = userLocation!!.longitude
-            viewModel.loadHospital(lat.toFloat(),lng.toFloat())
-        /*locationManager.update
-            val userLocation = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-            val asdf = userLocation?.latitude
-            viewModel.loadHospital(userLocation?.latitude?.toFloat(),userLocation?.longitude?.toFloat())*/
+        //    viewModel.loadHospital(lat.toFloat(),lng.toFloat())
+            viewModel.loadHospital(127.1270.toFloat(),37.4476.toFloat())
+
         }
     }
 
@@ -118,12 +98,6 @@ class HomeFragment : BaseFragment(), HomeListener {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
             adapter = hospitalRecyclerAdapter
         }
-
-        val model2 = ArrayList<HospitalModel>()
-        for(i in 0..2){
-            model2.add(HospitalModel(1,"","",""))
-        }
-
 
     }
 
