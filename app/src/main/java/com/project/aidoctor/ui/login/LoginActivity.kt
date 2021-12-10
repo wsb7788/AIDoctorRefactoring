@@ -1,9 +1,12 @@
 package com.project.aidoctor.ui.login
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.InputType
 import android.text.SpannableStringBuilder
+import android.util.Base64.encode
+import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.project.aidoctor.R
@@ -13,6 +16,8 @@ import com.project.aidoctor.ui.BaseActivity
 import com.project.aidoctor.ui.main.MainActivity
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.security.MessageDigest
+import java.util.*
 
 
 class LoginActivity : BaseActivity(), LoginListener {
@@ -32,6 +37,21 @@ class LoginActivity : BaseActivity(), LoginListener {
         binding.ivPassword.setOnClickListener(this)
         binding.ivEmail.setOnClickListener(this)
         binding.button.setOnClickListener(this)
+
+        try {
+            val info =
+                packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
+            for (signature in info.signatures) {
+                var md: MessageDigest
+                md = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                val something = Base64.getEncoder().encodeToString((md.digest()))
+                Log.e("Hash key", something)
+            }
+        } catch (e: Exception) {
+
+            Log.e("name not found", e.toString())
+        }
 
     }
 

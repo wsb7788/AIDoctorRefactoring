@@ -14,6 +14,9 @@ import com.project.aidoctor.ui.BaseActivity
 import com.project.aidoctor.ui.home.HomeFragment
 import com.project.aidoctor.ui.home.HospitalModel
 import com.project.aidoctor.ui.profile.ProfileFragment
+import net.daum.mf.map.api.MapPoint
+import net.daum.mf.map.api.MapView
+
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HospitalActivity : BaseActivity() {
@@ -31,6 +34,8 @@ class HospitalActivity : BaseActivity() {
         item = intent.getSerializableExtra("item") as HospitalModel
 
         setContent()
+
+
     }
 
     private fun setContent() {
@@ -42,6 +47,9 @@ class HospitalActivity : BaseActivity() {
         else
             binding.tvUrl.text = item.url
 
+        val mapView = MapView(this)
+        binding.mv.addView(mapView)
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.53737528, 127.00557633), true);
     }
 
     override fun onClick(v: View?) {

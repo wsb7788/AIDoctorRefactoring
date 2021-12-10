@@ -3,6 +3,7 @@
     package="com.project.aidoctor">
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
@@ -23,6 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="8d87ad9fc2cfb28afde17c17eb564222"/>
     </application>
+
 
 </manifest>
