@@ -24,4 +24,7 @@ class HospitalRecyclerAdapter:RecyclerView.Adapter<HospitalViewHolder>() {
     }
 
     override fun getItemCount(): Int = modelList.size
+    fun clearList() {
+        this.modelList.clear()
+    }
 }

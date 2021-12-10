@@ -13,4 +13,12 @@ interface HomeService {
     @GET("/api/covid")
     suspend fun covid(
     ): Response<CovidResponse>
+
+    @FormUrlEncoded
+    @POST("/api/hospital")
+    suspend fun hospital(
+        @Field("xPos") xPos:Float,
+        @Field("yPos") yPos:Float,
+        @Field("sbjCode") sbjCode:Int
+    ): Response<HospitalResponse>
 }

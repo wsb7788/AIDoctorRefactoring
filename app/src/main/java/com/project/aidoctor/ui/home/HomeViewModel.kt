@@ -48,4 +48,21 @@ class HomeViewModel(private val repository: HomeRepository): ViewModel(){
             }
         }
     }
+
+    fun loadHospital(xPos: Float?, yPos: Float?) {
+        Coroutines.main {
+
+            try {
+                val response = repository.hospital(xPos!!,yPos!!,1)
+
+                if(response.isSuccess){
+                    homeListener!!.onHospitalLoad(response.results)
+                    return@main
+                }
+                homeListener!!.onFailure(response.message)
+            }catch(e:Exception){
+                homeListener!!.onFailure(e.message!!)
+            }
+        }
+    }
 }
