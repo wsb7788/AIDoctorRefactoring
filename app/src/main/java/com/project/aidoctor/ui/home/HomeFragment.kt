@@ -3,6 +3,7 @@ package com.project.aidoctor.ui.home
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -21,6 +22,7 @@ import com.project.aidoctor.data.entities.Hospital
 import com.project.aidoctor.data.remote.home.HomeListener
 import com.project.aidoctor.databinding.FragmentHomeBinding
 import com.project.aidoctor.ui.BaseFragment
+import com.project.aidoctor.ui.hospital.HospitalActivity
 import com.project.aidoctor.ui.main.MainActivity
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -39,7 +41,7 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
     var locationManager: LocationManager? = null
     var locationListener: LocationListener? = null
 
-    var mainActivity:MainActivity? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,28 +52,31 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
         viewModel.homeListener = this
 
 
+
         recyclerInit()
         viewModel.loadDisease()
         viewModel.loadCovid()
         getLocation()
         binding.btnRefresh.setOnClickListener(this)
+        hospitalRecyclerAdapter.setItemClickListener(this)
         return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainActivity = context as MainActivity
-    }
+
 
     private fun getLocation() {
         var lat = 0.0
         var lng = 0.0
         if(checkLocationPermission()){
             locationManager= activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager?
-            val userLocation:Location? = locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            val userLocation:Location? = locationManager!!.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-            lat = userLocation!!.latitude
-            lng = userLocation!!.longitude
+            if (userLocation != null) {
+                lat = userLocation.latitude
+            }
+            if (userLocation != null) {
+                lng = userLocation.longitude
+            }
         //    viewModel.loadHospital(lat.toFloat(),lng.toFloat())
             viewModel.loadHospital(127.1270.toFloat(),37.4476.toFloat())
 
@@ -132,7 +137,7 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
         val model = ArrayList<HospitalModel>()
 
         for(i in 0 until results.size){
-            model.add(HospitalModel(0,results[i].className,results[i].name,results[i].addr))
+            model.add(HospitalModel(0,results[i].className,results[i].name,results[i].addr,results[i].phone,results[i].xPos.toFloat(),results[i].yPos.toFloat()))
         }
         hospitalRecyclerAdapter.clearList()
         hospitalRecyclerAdapter.submitList(model)
@@ -141,8 +146,9 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
 
     override fun onClick(v: View, position: Int) {
         val item = hospitalRecyclerAdapter.getItemContent(position)
-        mainActivity!!.openFragment()
-        mainActivity!!.deliveryItem(item)
+        val intent = Intent(context, HospitalActivity::class.java)
+        intent.putExtra("item",item)
+        startActivity(intent)
     }
 
 

@@ -61,7 +61,7 @@
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:textColor="@color/red"
-                    android:text="303303"
+                    android:text="0"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginEnd="7.5dp"
                     app:layout_constraintEnd_toStartOf="@id/btn_refresh"
