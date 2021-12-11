@@ -32,12 +32,12 @@ class ChatViewModel(private val repository: ChatRepository,private val sharedPre
                 text
             val cvsID = sharedPreferencesManager.getCvsID()
             try {
-
+                chatListener!!.clearText()
+                chatListener!!.addChat(e)
                 val response = repository.chatSend(e,cvsID)
 
                 if(response.isSuccess){
-                    chatListener!!.clearText()
-                    chatListener!!.addChat(e)
+
                     chatListener!!.onSendSuccess(response.results)
 
                     return@main

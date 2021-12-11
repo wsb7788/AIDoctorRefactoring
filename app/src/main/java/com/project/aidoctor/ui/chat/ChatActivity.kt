@@ -74,7 +74,7 @@ class ChatActivity : BaseActivity(), ChatListener {
     }
 
     override fun clearText() {
-        binding.tvTitle.text = ""
+        binding.etMessage.text = null
     }
 
     override fun addChat(message: String) {
@@ -82,17 +82,27 @@ class ChatActivity : BaseActivity(), ChatListener {
         model.add(ChatModel(isMe = true,text = message))
         chatRecyclerAdapter.submitList(model)
         chatRecyclerAdapter.notifyDataSetChanged()
+        binding.rcvChat.scrollToPosition(chatRecyclerAdapter.itemCount-1)
     }
 
     override fun onSendSuccess(results: ArrayList<ChatSendResults>) {
         val model = ArrayList<ChatModel>()
-        if(results[0].type =="TEXT")
-            model.add(ChatModel(text = results[0].message[0].title))
-        else
-            model.add(ChatModel(text = results[0].message[0].title,listItem = results[0].message[0].listItem))
-
+        for(i in 0 until results.size) {
+            if (results[i].type == "TEXT") {
+                if(results[i].message.title.contains("http")){
+                    val img = results[i].message.title.split("\"")
+                    model.add(ChatModel(thumbnail = img[1]))
+                }else
+                    model.add(ChatModel(text = results[i].message.title))
+            }
+            else{
+                model.add(ChatModel(text = results[i].message.title, listItem = results[i].message.listItem))
+            }
+        }
         chatRecyclerAdapter.submitList(model)
         chatRecyclerAdapter.notifyDataSetChanged()
+        binding.rcvChat.scrollToPosition(chatRecyclerAdapter.itemCount-1)
+
     }
 
 

@@ -14,6 +14,6 @@ interface ChatService {
     @POST("/api/chatSend2")
     suspend fun chatSend(
         @Field("message") message:String,
-        @Field("cvsID") cvsID:String,
+        @Field("cvsId") cvsID:String,
     ): Response<ChatSendResponse>
 }

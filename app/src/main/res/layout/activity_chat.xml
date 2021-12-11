@@ -67,6 +67,7 @@
                 android:background="@drawable/chat_border">
 
                 <EditText
+                    android:id="@+id/et_message"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"

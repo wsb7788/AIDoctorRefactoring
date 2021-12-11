@@ -32,7 +32,7 @@ data class ChatSendResponse(
 )
 data class ChatSendResults(
     val type:String,
-    val message:ArrayList<ChatSendMessage>
+    val message:ChatSendMessage
 )
 data class ChatSendMessage(
     val title:String,
