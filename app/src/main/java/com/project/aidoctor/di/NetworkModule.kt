@@ -4,6 +4,7 @@ package com.project.faily.di
 import com.project.aidoctor.data.remote.chat.ChatService
 import com.project.aidoctor.data.remote.home.HomeService
 import com.project.aidoctor.data.remote.login.LoginService
+import com.project.aidoctor.data.remote.profile.ProfileService
 import com.project.aidoctor.util.SharedPreferencesManager
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -56,6 +57,8 @@ val networkModule: Module = module {
         retrofit.create(HomeService::class.java)
    fun provideChatService(retrofit: Retrofit): ChatService =
         retrofit.create(ChatService::class.java)
+   fun provideProfileService(retrofit: Retrofit): ProfileService =
+        retrofit.create(ProfileService::class.java)
 
     single { provideHeaderInterceptor(get()) }
     single { provideOkHttpClient(get()) }
@@ -67,6 +70,7 @@ val networkModule: Module = module {
     single { provideLoginService(get()) }
     single { provideHomeService(get()) }
     single { provideChatService(get()) }
+    single { provideProfileService(get()) }
 
 }
 
