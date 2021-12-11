@@ -87,7 +87,7 @@
                 app:layout_constraintTop_toTopOf="@id/textview2"
                 app:layout_constraintBottom_toBottomOf="@id/textview3"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:trackTint="@drawable/bnv_color"
+                app:trackTint="@drawable/switch_track_color"
                 app:thumbTint="@drawable/switch_thumb_color" />
 
             <TextView
