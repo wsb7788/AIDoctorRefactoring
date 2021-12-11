@@ -1,5 +1,6 @@
 package com.project.aidoctor.di
 
+import com.project.aidoctor.ui.admin.AdminViewModel
 import com.project.aidoctor.ui.chat.ChatViewModel
 import com.project.aidoctor.ui.home.HomeViewModel
 import com.project.aidoctor.ui.hospital.HospitalViewModel
@@ -20,4 +21,5 @@ val viewModelModule = module {
     viewModel { ProfileViewModel(get()) }
     viewModel { SplashViewModel(get(),get()) }
     viewModel { HospitalViewModel() }
+    viewModel { AdminViewModel() }
 }

@@ -87,7 +87,10 @@ class LoginViewModel(private val repository: LoginRepository, private val shared
                 val loginResponse = repository.login(User(userName = email, password = pw))
 
                 if(loginResponse.isSuccess){
-                    loginListener!!.onStartMain()
+                    if(loginResponse.user.USER_ISADMIN == 1){
+                        loginListener!!.onStartAdmin()
+                    }else
+                        loginListener!!.onStartMain()
                     return@main
                 }
                 loginListener!!.onLoginFailure(loginResponse.message)

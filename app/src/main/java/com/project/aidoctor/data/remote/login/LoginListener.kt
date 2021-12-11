@@ -8,4 +8,5 @@ interface LoginListener {
     fun onLoginFailure(message: String)
     fun onLoginSuccess()
     fun onStartMain()
+    fun onStartAdmin()
 }

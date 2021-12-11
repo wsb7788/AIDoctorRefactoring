@@ -13,6 +13,7 @@ import com.project.aidoctor.R
 import com.project.aidoctor.data.remote.login.LoginListener
 import com.project.aidoctor.databinding.ActivityLoginBinding
 import com.project.aidoctor.ui.BaseActivity
+import com.project.aidoctor.ui.admin.AdminActivity
 import com.project.aidoctor.ui.main.MainActivity
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -99,6 +100,12 @@ class LoginActivity : BaseActivity(), LoginListener {
 
     override fun onStartMain() {
         val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onStartAdmin() {
+        val intent = Intent(this, AdminActivity::class.java)
         startActivity(intent)
         finish()
     }
