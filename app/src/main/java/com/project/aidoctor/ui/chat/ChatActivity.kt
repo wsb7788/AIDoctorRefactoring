@@ -1,14 +1,19 @@
 package com.project.aidoctor.ui.chat
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.project.aidoctor.ApplicationClass
 import com.project.aidoctor.R
 import com.project.aidoctor.data.remote.chat.ChatListener
 import com.project.aidoctor.data.remote.chat.ChatSendResults
 import com.project.aidoctor.data.remote.chat.ChatStartResults
 import com.project.aidoctor.databinding.ActivityChatBinding
+import com.project.aidoctor.databinding.DialogEmergencyBinding
+import com.project.aidoctor.databinding.DialogLogoutBinding
 import com.project.aidoctor.ui.BaseActivity
 import com.project.aidoctor.util.hideKeyboard
 import com.project.aidoctor.util.toast
@@ -21,7 +26,7 @@ class ChatActivity : BaseActivity(), ChatListener {
 
 
     lateinit var chatRecyclerAdapter: ChatRecyclerAdapter
-
+    private lateinit var view: DialogEmergencyBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat)
@@ -50,7 +55,22 @@ class ChatActivity : BaseActivity(), ChatListener {
     override fun onClick(v: View?) {
         when(v){
             binding.btnSend -> sendMessage()
-            binding.btnEmergency -> {}
+            binding.btnEmergency -> emergencyDialog()
+        }
+    }
+
+    private fun emergencyDialog() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        view = DialogEmergencyBinding.inflate(layoutInflater)
+        dialogBuilder.setView(view.root)
+        val alertDialog = dialogBuilder.create()
+        alertDialog.show()
+
+        view.btnNo.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        view.btnOk.setOnClickListener {
+            alertDialog.dismiss()
         }
     }
 
