@@ -22,14 +22,16 @@ class ChatViewModel(private val repository: ChatRepository): ViewModel(){
 
 
 
-    fun send() {
-
-        val message = message.value.toString()
+    fun send(text:String="") {
+        val e:String = if(text.isNullOrEmpty()){
+            message.value.toString()
+        }else
+            text
         Coroutines.main {
 
             try {
 
-                val response = repository.chatSend(message)
+                val response = repository.chatSend(e)
 
                 if(response.isSuccess){
                     chatListener!!.clearText()

@@ -27,6 +27,7 @@ class ChatActivity : BaseActivity(), ChatListener {
 
 
     lateinit var chatRecyclerAdapter: ChatRecyclerAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat)
@@ -43,7 +44,7 @@ class ChatActivity : BaseActivity(), ChatListener {
     }
 
     private fun recyclerInit() {
-        chatRecyclerAdapter = ChatRecyclerAdapter()
+        chatRecyclerAdapter = ChatRecyclerAdapter(viewModel)
 
         binding.rcvChat.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
@@ -73,7 +74,6 @@ class ChatActivity : BaseActivity(), ChatListener {
 
         model.add(ChatModel(thumbnail = results.thumbnail))
         model.add(ChatModel(text = results.title, listItem = results.listItem))
-
         chatRecyclerAdapter.submitList(model)
         chatRecyclerAdapter.notifyDataSetChanged()
 
@@ -82,6 +82,8 @@ class ChatActivity : BaseActivity(), ChatListener {
     override fun clearText() {
         binding.tvTitle.text = ""
     }
+
+
 
 
 }
