@@ -3,9 +3,8 @@ package com.project.aidoctor.ui.chat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.project.faily.databinding.LayoutRecyclerChatMeBinding
-import com.project.faily.databinding.LayoutRecyclerChatYouBinding
-import com.project.faily.databinding.LayoutRecyclerHomeFamilyBinding
+import com.project.aidoctor.databinding.LayoutRecyclerChatMeBinding
+import com.project.aidoctor.databinding.LayoutRecyclerChatYouBinding
 
 class ChatRecyclerAdapter:RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var modelList=ArrayList<ChatModel>()

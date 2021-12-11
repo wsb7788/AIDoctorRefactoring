@@ -15,7 +15,7 @@ val viewModelModule = module {
 
     viewModel { LoginViewModel(get(), get()) }
     viewModel { MainViewModel() }
-    viewModel { ChatViewModel() }
+    viewModel { ChatViewModel(get()) }
     viewModel { HomeViewModel(get()) }
     viewModel { ProfileViewModel() }
     viewModel { SplashViewModel(get(),get()) }

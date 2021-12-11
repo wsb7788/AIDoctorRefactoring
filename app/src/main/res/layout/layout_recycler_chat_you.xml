@@ -26,24 +26,33 @@
         app:layout_constraintStart_toEndOf="@id/iv_profile"
         android:layout_margin="17dp"
         >
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
 
 
         <TextView
             android:id="@+id/textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="rrrrlkasdlkasdlkasdlkasdlkasdlkasdlkasdlkasdlkasdlfjas"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/textview"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

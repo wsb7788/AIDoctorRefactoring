@@ -8,7 +8,7 @@ data class ChatStartResponse(
     val isSuccess:Boolean,
     val code: Int,
     val message: String,
-    val results: ArrayList<ChatStartResults>
+    val results: ChatStartResults
 )
 
 data class ChatStartResults(

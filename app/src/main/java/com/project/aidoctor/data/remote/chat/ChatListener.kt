@@ -6,7 +6,7 @@ import com.project.aidoctor.data.entities.Hospital
 
 interface ChatListener {
     abstract fun onFailure(message: String)
-    abstract fun onStartSuccess(results: ArrayList<ChatStartResults>)
+    abstract fun onStartSuccess(results: ChatStartResults)
     fun clearText()
 
 
