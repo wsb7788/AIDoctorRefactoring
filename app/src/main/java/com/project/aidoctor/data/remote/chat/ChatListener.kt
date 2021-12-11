@@ -5,7 +5,9 @@ import com.project.aidoctor.data.entities.Disease
 import com.project.aidoctor.data.entities.Hospital
 
 interface ChatListener {
-
+    abstract fun onFailure(message: String)
+    abstract fun onStartSuccess(results: ArrayList<ChatStartResults>)
+    fun clearText()
 
 
 }
