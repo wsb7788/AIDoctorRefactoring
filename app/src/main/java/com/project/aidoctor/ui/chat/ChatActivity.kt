@@ -1,21 +1,15 @@
 package com.project.aidoctor.ui.chat
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.navigation.NavigationBarView
 import com.project.aidoctor.R
 import com.project.aidoctor.data.remote.chat.ChatListener
+import com.project.aidoctor.data.remote.chat.ChatSendResults
 import com.project.aidoctor.data.remote.chat.ChatStartResults
 import com.project.aidoctor.databinding.ActivityChatBinding
-import com.project.aidoctor.databinding.ActivityMainBinding
 import com.project.aidoctor.ui.BaseActivity
-import com.project.aidoctor.ui.home.HomeFragment
-import com.project.aidoctor.ui.profile.ProfileFragment
 import com.project.aidoctor.util.hideKeyboard
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -83,7 +77,23 @@ class ChatActivity : BaseActivity(), ChatListener {
         binding.tvTitle.text = ""
     }
 
+    override fun addChat(message: String) {
+        val model = ArrayList<ChatModel>()
+        model.add(ChatModel(isMe = true,text = message))
+        chatRecyclerAdapter.submitList(model)
+        chatRecyclerAdapter.notifyDataSetChanged()
+    }
 
+    override fun onSendSuccess(results: ArrayList<ChatSendResults>) {
+        val model = ArrayList<ChatModel>()
+        if(results[0].type =="TEXT")
+            model.add(ChatModel(text = results[0].message[0].title))
+        else
+            model.add(ChatModel(text = results[0].message[0].title,listItem = results[0].message[0].listItem))
+
+        chatRecyclerAdapter.submitList(model)
+        chatRecyclerAdapter.notifyDataSetChanged()
+    }
 
 
 }

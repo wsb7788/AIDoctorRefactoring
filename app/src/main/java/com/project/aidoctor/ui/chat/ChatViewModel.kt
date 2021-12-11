@@ -4,14 +4,15 @@ package com.project.aidoctor.ui.chat
 
 
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.aidoctor.data.remote.chat.ChatListener
-import com.project.aidoctor.data.remote.home.HomeListener
 import com.project.aidoctor.data.repository.chat.ChatRepository
 import com.project.aidoctor.util.Coroutines
+import com.project.aidoctor.util.SharedPreferencesManager
 
-class ChatViewModel(private val repository: ChatRepository): ViewModel(){
+class ChatViewModel(private val repository: ChatRepository,private val sharedPreferencesManager: SharedPreferencesManager): ViewModel(){
 
     val message: MutableLiveData<String> by lazy {
         MutableLiveData<String>().apply {
@@ -23,18 +24,21 @@ class ChatViewModel(private val repository: ChatRepository): ViewModel(){
 
 
     fun send(text:String="") {
-        val e:String = if(text.isNullOrEmpty()){
-            message.value.toString()
-        }else
-            text
-        Coroutines.main {
 
+        Coroutines.main {
+            val e:String = if(text.isNullOrEmpty()){
+                message.value.toString()
+            }else
+                text
+            val cvsID = sharedPreferencesManager.getCvsID()
             try {
 
-                val response = repository.chatSend(e)
+                val response = repository.chatSend(e,cvsID)
 
                 if(response.isSuccess){
                     chatListener!!.clearText()
+                    chatListener!!.addChat(e)
+                    chatListener!!.onSendSuccess(response.results)
 
                     return@main
                 }
@@ -56,6 +60,8 @@ class ChatViewModel(private val repository: ChatRepository): ViewModel(){
 
                 if(response.isSuccess){
                     chatListener!!.onStartSuccess(response.results)
+                    sharedPreferencesManager.saveCvsID(response.results.cvsID)
+                    Log.e("scvID",sharedPreferencesManager.getCvsID())
                     return@main
                 }
                 chatListener!!.onFailure(response.message)

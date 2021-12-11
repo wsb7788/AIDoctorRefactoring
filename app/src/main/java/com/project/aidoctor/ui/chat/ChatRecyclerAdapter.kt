@@ -81,13 +81,12 @@ class ChatRecyclerAdapter(val viewModel:ChatViewModel):RecyclerView.Adapter<Recy
             for(i in 0 until chatModel.listItem.size){
                 myModel.add(ButtonModel(chatModel.listItem[i].value))
             }
-
-
             binding.rcvButton.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
                 adapter = buttonAdapter
             }
             buttonAdapter.setItemClickListener(this)
+            buttonAdapter.clearList()
             buttonAdapter.submitList(myModel)
             buttonAdapter.notifyDataSetChanged()
 
@@ -97,7 +96,6 @@ class ChatRecyclerAdapter(val viewModel:ChatViewModel):RecyclerView.Adapter<Recy
 
         override fun onClick(v: View, position: Int) {
             viewModel.send(buttonAdapter.getItemValue(position))
-
         }
 
 

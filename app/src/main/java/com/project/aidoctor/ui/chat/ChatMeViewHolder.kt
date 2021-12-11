@@ -7,6 +7,7 @@ class ChatMeViewHolder(val binding: LayoutRecyclerChatMeBinding): RecyclerView.V
 
     fun bind(chatModel: ChatModel){
 
+        binding.text.text = chatModel.text
 
     }
 }

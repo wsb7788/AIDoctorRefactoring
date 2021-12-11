@@ -191,4 +191,15 @@ class SharedPreferencesManager(private val context: Context){
         val pref = getInstantPref()
         return pref.getInt("questionIndex",12312312)!!
     }
+
+    fun saveCvsID(cvsID: String) {
+        val pref = getInstantPref()
+        val edit = pref.edit()
+        edit.putString("cvsID",cvsID)
+        edit.apply()
+    }
+    fun getCvsID(): String {
+        val pref = getInstantPref()
+        return pref.getString("cvsID","")!!
+    }
 }

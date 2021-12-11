@@ -13,7 +13,7 @@ class ChatRepository(private val chatService: ChatService) : BaseRepository() {
     suspend fun chatStart(): ChatStartResponse {
         return apiRequest { chatService.chatStart() }
     }
-    suspend fun chatSend(message:String): ChatSendResponse {
-        return apiRequest { chatService.chatSend(message) }
+    suspend fun chatSend(message:String,cvsID:String): ChatSendResponse {
+        return apiRequest { chatService.chatSend(message,cvsID) }
     }
 }

@@ -14,7 +14,8 @@ data class ChatStartResponse(
 data class ChatStartResults(
     val thumbnail:String,
     val title: String,
-    val listItem:ArrayList<ChatButton>
+    val listItem:ArrayList<ChatButton>,
+    val cvsID: String
 )
 
 data class ChatButton(
