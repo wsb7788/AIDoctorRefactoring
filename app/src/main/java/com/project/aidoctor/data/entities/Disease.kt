@@ -4,6 +4,7 @@ data class Disease(
     val DIS_ID: Int,
     val DIS_NAME: String,
     val DIS_SUMMARY: String,
+    val DIS_ROUTE: String,
     val DIS_SYMPTOM: String,
     val DIS_INCUB: String,
     val DIS_PREVENT: String,

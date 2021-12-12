@@ -6,8 +6,8 @@ import com.project.aidoctor.databinding.LayoutRecyclerFileBinding
 class FileViewHolder(val binding: LayoutRecyclerFileBinding): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(fileModel: FileModel){
-        binding.tvTitle.text = fileModel.title
-        binding.tvContent.text = fileModel.content
+        binding.tvTitle.text = fileModel.name
+        binding.tvContent.text = fileModel.summary
 
     }
 }

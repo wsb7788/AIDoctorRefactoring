@@ -22,13 +22,14 @@ import com.project.aidoctor.data.entities.Hospital
 import com.project.aidoctor.data.remote.home.HomeListener
 import com.project.aidoctor.databinding.FragmentHomeBinding
 import com.project.aidoctor.ui.BaseFragment
+import com.project.aidoctor.ui.disease.DiseaseActivity
 import com.project.aidoctor.ui.hospital.HospitalActivity
 import com.project.aidoctor.ui.main.MainActivity
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItemClickListener {
+class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItemClickListener,FileRecyclerAdapter.OnItemClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -58,7 +59,10 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
         viewModel.loadCovid()
         getLocation()
         binding.btnRefresh.setOnClickListener(this)
+
         hospitalRecyclerAdapter.setItemClickListener(this)
+        fileRecyclerAdapter.setItemClickListener(this)
+
         return binding.root
     }
 
@@ -122,8 +126,10 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
         val model = ArrayList<FileModel>()
 
         for(i in 0 until results.size){
-            model.add(FileModel(results[i].DIS_NAME,results[i].DIS_SUMMARY))
+            model.add(FileModel(results[i].DIS_NAME,results[i].DIS_SUMMARY,results[i].DIS_ROUTE,results[i].DIS_SYMPTOM,results[i].DIS_INCUB,results[i].DIS_PREVENT,results[i].DIS_SOLUTION))
+
         }
+        viewModel.disease.postValue(results)
         fileRecyclerAdapter.clearList()
         fileRecyclerAdapter.submitList(model)
         fileRecyclerAdapter.notifyDataSetChanged()
@@ -147,6 +153,13 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
     override fun onClick(v: View, position: Int) {
         val item = hospitalRecyclerAdapter.getItemContent(position)
         val intent = Intent(context, HospitalActivity::class.java)
+        intent.putExtra("item",item)
+        startActivity(intent)
+    }
+
+    override fun onClickDisease(v: View, position: Int) {
+        val item = fileRecyclerAdapter.getItemContent(position)
+        val intent = Intent(context, DiseaseActivity::class.java)
         intent.putExtra("item",item)
         startActivity(intent)
     }

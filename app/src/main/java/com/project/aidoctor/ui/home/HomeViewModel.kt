@@ -4,7 +4,9 @@ package com.project.aidoctor.ui.home
 
 
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.project.aidoctor.data.entities.Disease
 import com.project.aidoctor.data.remote.home.HomeListener
 import com.project.aidoctor.data.repository.home.HomeRepository
 import com.project.aidoctor.util.Coroutines
@@ -12,6 +14,11 @@ import java.lang.Exception
 
 class HomeViewModel(private val repository: HomeRepository): ViewModel(){
     var homeListener: HomeListener? = null
+
+    val disease: MutableLiveData<ArrayList<Disease>> by lazy {
+        MutableLiveData<ArrayList<Disease>>().apply {
+        }
+    }
 
     fun loadDisease() {
 
@@ -64,5 +71,13 @@ class HomeViewModel(private val repository: HomeRepository): ViewModel(){
                 homeListener!!.onFailure(e.message!!)
             }
         }
+    }
+
+    fun getDiseaseItem(name: String): Disease {
+        for(i in 0 until disease.value!!.size){
+            if(disease.value!![i].DIS_NAME == name)
+                return disease.value!![i]
+        }
+        return Disease(1,"","","","","","","")
     }
 }
