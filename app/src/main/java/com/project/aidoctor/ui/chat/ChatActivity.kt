@@ -40,6 +40,7 @@ class ChatActivity : BaseActivity(), ChatListener {
 
         binding.btnSend.setOnClickListener(this)
         binding.btnEmergency.setOnClickListener(this)
+        binding.btnReset.setOnClickListener(this)
     }
 
     private fun recyclerInit() {
@@ -56,6 +57,7 @@ class ChatActivity : BaseActivity(), ChatListener {
         when(v){
             binding.btnSend -> sendMessage()
             binding.btnEmergency -> emergencyDialog()
+            binding.btnReset -> viewModel.send("초기화")
         }
     }
 

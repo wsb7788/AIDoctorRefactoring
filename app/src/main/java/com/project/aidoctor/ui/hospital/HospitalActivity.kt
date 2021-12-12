@@ -1,5 +1,7 @@
 package com.project.aidoctor.ui.hospital
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
@@ -29,7 +31,7 @@ class HospitalActivity : BaseActivity() {
 
         setContent()
 
-
+        binding.btnCall.setOnClickListener(this)
     }
 
     private fun setContent() {
@@ -62,8 +64,14 @@ class HospitalActivity : BaseActivity() {
 
     override fun onClick(v: View?) {
         when(v){
-
+            binding.btnCall -> call()
         }
+    }
+
+    private fun call() {
+        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+item.call!!.replace("-","")))
+        startActivity(intent)
+
     }
 
 

@@ -68,7 +68,7 @@
                 app:layout_constraintStart_toStartOf="@id/tv_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_hash"
                 android:layout_marginTop="30dp"
-                android:id="@+id/iv_call"/>
+                android:id="@+id/btn_call"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,9 +77,9 @@
                 android:textStyle="bold"
                 android:textColor="@color/gray_4"
                 android:text="1231=2312-3123-12-3"
-                app:layout_constraintTop_toTopOf="@id/iv_call"
-                app:layout_constraintBottom_toBottomOf="@id/iv_call"
-                app:layout_constraintStart_toEndOf="@id/iv_call"
+                app:layout_constraintTop_toTopOf="@id/btn_call"
+                app:layout_constraintBottom_toBottomOf="@id/btn_call"
+                app:layout_constraintStart_toEndOf="@id/btn_call"
                 android:layout_marginStart="20dp"
                 android:id="@+id/tv_call"/>
 
@@ -87,8 +87,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_hospital_location"
-                app:layout_constraintTop_toBottomOf="@id/iv_call"
-                app:layout_constraintStart_toStartOf="@id/iv_call"
+                app:layout_constraintTop_toBottomOf="@id/btn_call"
+                app:layout_constraintStart_toStartOf="@id/btn_call"
                 android:layout_marginTop="25dp"
                 android:id="@+id/iv_location"/>
 
