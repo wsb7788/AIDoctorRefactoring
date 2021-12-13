@@ -72,6 +72,7 @@ class ChatActivity : BaseActivity(), ChatListener {
             alertDialog.dismiss()
         }
         view.btnOk.setOnClickListener {
+            viewModel.emergency()
             alertDialog.dismiss()
         }
     }
@@ -125,6 +126,10 @@ class ChatActivity : BaseActivity(), ChatListener {
         chatRecyclerAdapter.notifyDataSetChanged()
         binding.rcvChat.scrollToPosition(chatRecyclerAdapter.itemCount-1)
 
+    }
+
+    override fun onEmergencySuccess(message: String) {
+        applicationContext.toast(message)
     }
 
 

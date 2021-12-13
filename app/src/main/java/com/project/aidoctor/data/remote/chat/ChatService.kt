@@ -16,4 +16,9 @@ interface ChatService {
         @Field("message") message:String,
         @Field("cvsId") cvsID:String,
     ): Response<ChatSendResponse>
+    @FormUrlEncoded
+    @POST("/fcm/emergency")
+    suspend fun emergency(
+        @Field("userId") userId:String,
+    ): Response<EmergencyResponse>
 }

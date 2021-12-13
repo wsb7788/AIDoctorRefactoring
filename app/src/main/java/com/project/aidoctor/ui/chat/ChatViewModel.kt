@@ -71,4 +71,24 @@ class ChatViewModel(private val repository: ChatRepository,private val sharedPre
             }
         }
     }
+
+    fun emergency() {
+        Coroutines.main {
+
+            try {
+
+                val userId = sharedPreferencesManager.getId()
+                val response = repository.emergency(userId)
+
+                if(response.isSuccess){
+                    chatListener!!.onEmergencySuccess("신고가 접수되었습니다.")
+                    return@main
+                }
+                chatListener!!.onFailure(response.message)
+
+            }catch (e:Exception){
+                chatListener!!.onFailure(e.message!!)
+            }
+        }
+    }
 }

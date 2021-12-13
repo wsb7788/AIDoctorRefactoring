@@ -6,6 +6,7 @@ interface ChatListener {
     fun clearText()
     fun addChat(message: String)
     abstract fun onSendSuccess(results: ArrayList<ChatSendResults>)
+    abstract fun onEmergencySuccess(message: String)
 
 
 }

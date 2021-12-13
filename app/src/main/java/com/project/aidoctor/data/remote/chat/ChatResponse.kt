@@ -38,3 +38,9 @@ data class ChatSendMessage(
     val title:String,
     val listItem:ArrayList<ChatButton>
 )
+
+data class EmergencyResponse(
+    val isSuccess:Boolean,
+    val code: Int,
+    val message: String
+)

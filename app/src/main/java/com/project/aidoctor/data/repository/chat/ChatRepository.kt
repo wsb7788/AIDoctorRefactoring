@@ -4,6 +4,7 @@ import com.project.aidoctor.data.entities.User
 import com.project.aidoctor.data.remote.chat.ChatSendResponse
 import com.project.aidoctor.data.remote.chat.ChatService
 import com.project.aidoctor.data.remote.chat.ChatStartResponse
+import com.project.aidoctor.data.remote.chat.EmergencyResponse
 
 import com.project.aidoctor.data.remote.login.LoginResponse
 import com.project.aidoctor.data.remote.login.LoginService
@@ -15,5 +16,8 @@ class ChatRepository(private val chatService: ChatService) : BaseRepository() {
     }
     suspend fun chatSend(message:String,cvsID:String): ChatSendResponse {
         return apiRequest { chatService.chatSend(message,cvsID) }
+    }
+    suspend fun emergency(userId:String): EmergencyResponse {
+        return apiRequest { chatService.emergency(userId) }
     }
 }

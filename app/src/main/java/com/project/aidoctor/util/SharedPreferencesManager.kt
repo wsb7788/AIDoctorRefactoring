@@ -39,7 +39,7 @@ class SharedPreferencesManager(private val context: Context){
         return context.getSharedPreferences("instant",Context.MODE_PRIVATE)
     }
 
-    private fun getToken():String{
+    fun getToken():String{
         val pref = getTokenPref()
         return pref.getString("token","")!!
     }

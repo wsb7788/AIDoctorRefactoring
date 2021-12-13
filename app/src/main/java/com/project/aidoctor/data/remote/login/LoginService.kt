@@ -10,5 +10,11 @@ interface LoginService {
     suspend fun login(
         @Body user: User
     ): Response<LoginResponse>
+    @FormUrlEncoded
+    @POST("/fcm/setToken/")
+    suspend fun setToken(
+        @Field("userId") userId: String,
+        @Field("token") token: String
+    ): Response<SetTokenResponse>
 
 }

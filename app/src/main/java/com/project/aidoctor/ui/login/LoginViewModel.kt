@@ -87,10 +87,32 @@ class LoginViewModel(private val repository: LoginRepository, private val shared
                 val loginResponse = repository.login(User(userName = email, password = pw))
 
                 if(loginResponse.isSuccess){
+                    setToken()
+                    sharedPreferencesManager.saveUser(email)
                     if(loginResponse.user.USER_ISADMIN == 1){
                         loginListener!!.onStartAdmin()
                     }else
                         loginListener!!.onStartMain()
+                    return@main
+                }
+                loginListener!!.onLoginFailure(loginResponse.message)
+
+            }catch (e:Exception){
+                loginListener!!.onLoginFailure(e.message!!)
+            }
+        }
+    }
+
+    private fun setToken() {
+        Coroutines.main {
+
+            try {
+                val token = sharedPreferencesManager.getToken()
+                val email = email.value.toString()
+
+                val loginResponse = repository.setToken(email,token)
+
+                if(loginResponse.isSuccess){
                     return@main
                 }
                 loginListener!!.onLoginFailure(loginResponse.message)
