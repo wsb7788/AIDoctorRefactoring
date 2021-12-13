@@ -19,6 +19,6 @@ interface ChatService {
     @FormUrlEncoded
     @POST("/fcm/emergency")
     suspend fun emergency(
-        @Field("userId") userId:String,
+        @Field("userId") userId:Int,
     ): Response<EmergencyResponse>
 }

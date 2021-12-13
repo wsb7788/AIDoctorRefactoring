@@ -11,7 +11,7 @@ class LoginRepository(private val loginService: LoginService) : BaseRepository()
     suspend fun login(user: User): LoginResponse {
         return apiRequest { loginService.login(user) }
     }
-    suspend fun setToken(userId:String, token:String): SetTokenResponse {
+    suspend fun setToken(userId:Int, token:String): SetTokenResponse {
         return apiRequest { loginService.setToken(userId, token) }
     }
 }

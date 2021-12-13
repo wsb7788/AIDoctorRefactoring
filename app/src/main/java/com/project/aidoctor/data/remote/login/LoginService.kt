@@ -13,7 +13,7 @@ interface LoginService {
     @FormUrlEncoded
     @POST("/fcm/setToken/")
     suspend fun setToken(
-        @Field("userId") userId: String,
+        @Field("userId") userId: Int,
         @Field("token") token: String
     ): Response<SetTokenResponse>
 

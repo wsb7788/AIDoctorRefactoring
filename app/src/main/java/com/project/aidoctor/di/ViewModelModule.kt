@@ -21,5 +21,5 @@ val viewModelModule = module {
     viewModel { ProfileViewModel(get()) }
     viewModel { SplashViewModel(get(),get()) }
     viewModel { HospitalViewModel() }
-    viewModel { AdminViewModel() }
+    viewModel { AdminViewModel(get()) }
 }

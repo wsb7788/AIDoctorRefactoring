@@ -17,7 +17,7 @@ class ChatRepository(private val chatService: ChatService) : BaseRepository() {
     suspend fun chatSend(message:String,cvsID:String): ChatSendResponse {
         return apiRequest { chatService.chatSend(message,cvsID) }
     }
-    suspend fun emergency(userId:String): EmergencyResponse {
+    suspend fun emergency(userId:Int): EmergencyResponse {
         return apiRequest { chatService.emergency(userId) }
     }
 }

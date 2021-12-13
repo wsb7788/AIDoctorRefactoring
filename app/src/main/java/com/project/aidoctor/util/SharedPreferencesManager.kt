@@ -57,7 +57,12 @@ class SharedPreferencesManager(private val context: Context){
         edit.putString("token",getToken())
         edit.apply()
     }
-
+    fun saveId(id: Int){
+        val pref = getUserInfoPref()
+        val edit = pref.edit()
+        edit.putInt("id",id)
+        edit.apply()
+    }
     fun notFirstLaunch(){
         val pref = getSettingInfoPref()
         val edit = pref.edit()
@@ -70,9 +75,9 @@ class SharedPreferencesManager(private val context: Context){
         edit.putBoolean("autoLoginSuccess",true)
         edit.apply()
     }
-    fun getId():String{
+    fun getId():Int{
         val pref = getUserInfoPref()
-        return pref.getString("id","")!!
+        return pref.getInt("id",0)
     }
 
     fun saveNickname(nickname: String) {
