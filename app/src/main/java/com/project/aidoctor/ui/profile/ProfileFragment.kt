@@ -12,6 +12,7 @@ import com.project.aidoctor.databinding.DialogLogoutBinding
 import com.project.aidoctor.databinding.FragmentProfileBinding
 import com.project.aidoctor.ui.BaseFragment
 import com.project.aidoctor.ui.login.LoginActivity
+import com.project.aidoctor.ui.splash.SplashActivity
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -65,7 +66,7 @@ class ProfileFragment : BaseFragment(),ProfileListener {
     }
 
     override fun onSuccess() {
-        val intent = Intent(requireContext(), LoginActivity::class.java)
+        val intent = Intent(requireContext(), SplashActivity::class.java)
         startActivity(intent)
         activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
     }

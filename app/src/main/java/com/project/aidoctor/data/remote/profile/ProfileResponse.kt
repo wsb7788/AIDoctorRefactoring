@@ -9,3 +9,9 @@ data class LogoutResponse(
     val message: String)
 
 
+data class DeleteTokenResponse(
+    val isSuccess:Boolean,
+    val code: Int,
+    val message: String)
+
+
