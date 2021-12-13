@@ -1,5 +1,6 @@
 package com.project.aidoctor.ui.chat
 
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.project.aidoctor.databinding.LayoutRecyclerChatButtonBinding
 import com.project.aidoctor.databinding.LayoutRecyclerFileBinding

@@ -4,6 +4,7 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -82,7 +83,7 @@ class ChatRecyclerAdapter(val viewModel:ChatViewModel):RecyclerView.Adapter<Recy
                 myModel.add(ButtonModel(chatModel.listItem[i].value))
             }
             binding.rcvButton.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+                layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
                 adapter = buttonAdapter
             }
             buttonAdapter.setItemClickListener(this)

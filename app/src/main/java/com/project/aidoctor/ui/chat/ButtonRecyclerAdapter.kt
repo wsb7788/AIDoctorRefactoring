@@ -22,6 +22,7 @@ class ButtonRecyclerAdapter:RecyclerView.Adapter<ButtonViewHolder>() {
         }
     }
 
+
     fun submitList(modelList:ArrayList<ButtonModel>){
         this.modelList.addAll(modelList)
     }
