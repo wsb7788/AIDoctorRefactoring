@@ -77,7 +77,7 @@ class SharedPreferencesManager(private val context: Context){
     }
     fun getId():Int{
         val pref = getUserInfoPref()
-        return pref.getInt("id",0)
+        return pref.getInt("id",9999)
     }
 
     fun saveNickname(nickname: String) {
@@ -206,5 +206,29 @@ class SharedPreferencesManager(private val context: Context){
     fun getCvsID(): String {
         val pref = getInstantPref()
         return pref.getString("cvsID","")!!
+    }
+
+    fun saveEmail(email: String) {
+        val pref = getUserInfoPref()
+        val edit = pref.edit()
+        edit.putString("email",email)
+        edit.apply()
+    }
+
+    fun savePw(pw: String) {
+        val pref = getUserInfoPref()
+        val edit = pref.edit()
+        edit.putString("pw",pw)
+        edit.apply()
+    }
+
+    fun getEmail(): String {
+        val pref = getUserInfoPref()
+        return pref.getString("email","")!!
+    }
+
+    fun getPw(): String {
+        val pref = getUserInfoPref()
+        return pref.getString("pw","")!!
     }
 }

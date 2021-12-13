@@ -89,6 +89,8 @@ class LoginViewModel(private val repository: LoginRepository, private val shared
                 if(loginResponse.isSuccess){
                     setToken()
                     sharedPreferencesManager.saveId(loginResponse.user.USER_ID)
+                    sharedPreferencesManager.saveEmail(email)
+                    sharedPreferencesManager.savePw(pw)
                     if(loginResponse.user.USER_ISADMIN == 1){
                         loginListener!!.onStartAdmin()
                     }else

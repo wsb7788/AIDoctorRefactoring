@@ -18,7 +18,7 @@ val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { ChatViewModel(get(),get()) }
     viewModel { HomeViewModel(get()) }
-    viewModel { ProfileViewModel(get()) }
+    viewModel { ProfileViewModel(get(),get()) }
     viewModel { SplashViewModel(get(),get()) }
     viewModel { HospitalViewModel() }
     viewModel { AdminViewModel(get()) }
