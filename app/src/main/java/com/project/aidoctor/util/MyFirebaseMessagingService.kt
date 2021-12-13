@@ -16,6 +16,7 @@ import com.google.firebase.messaging.RemoteMessage
 import com.project.aidoctor.ApplicationClass
 import com.project.aidoctor.R
 import com.project.aidoctor.ui.login.LoginActivity
+import com.project.aidoctor.ui.splash.SplashActivity
 
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -50,7 +51,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     @SuppressLint("ServiceCast")
     private fun sendNotification(title: String, body: String) {
         val random = (System.currentTimeMillis() / 1000).toInt()
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, SplashActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(
             this, random, intent,

@@ -39,6 +39,9 @@ class ChatViewModel(private val repository: ChatRepository,private val sharedPre
                 if(response.isSuccess){
 
                     chatListener!!.onSendSuccess(response.results)
+                    if(e.contains("호출")){
+                        emergency()
+                    }
 
                     return@main
                 }
