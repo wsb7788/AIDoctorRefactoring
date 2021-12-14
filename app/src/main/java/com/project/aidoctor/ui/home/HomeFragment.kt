@@ -111,8 +111,8 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
     }
 
     private fun refreshDialog() {
-        val dialogBuilder = AlertDialog.Builder(this)
-        view = DialogLogoutBinding.inflate(layoutInflater)
+        val dialogBuilder = AlertDialog.Builder(requireActivity())
+        view = DialogRefreshHospitalBinding.inflate(layoutInflater)
         dialogBuilder.setView(view.root)
         val alertDialog = dialogBuilder.create()
         alertDialog.show()

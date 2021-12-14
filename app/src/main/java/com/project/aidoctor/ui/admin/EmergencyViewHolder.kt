@@ -1,6 +1,9 @@
 package com.project.aidoctor.ui.admin
 
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.project.aidoctor.ApplicationClass
+import com.project.aidoctor.R
 import com.project.aidoctor.data.remote.admin.EmUser
 import com.project.aidoctor.data.remote.chat.EmergencyResponse
 import com.project.aidoctor.databinding.LayoutRecyclerEmListBinding
@@ -10,5 +13,6 @@ class EmergencyViewHolder(val binding: LayoutRecyclerEmListBinding): RecyclerVie
 
     fun bind(emUser:EmUser){
         binding.tvName.text = emUser.USER_USERID
+        Glide.with(ApplicationClass.instance).load(R.drawable.no_profile).into(binding.iv)
     }
 }
