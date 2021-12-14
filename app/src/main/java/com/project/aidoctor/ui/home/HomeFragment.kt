@@ -2,6 +2,7 @@ package com.project.aidoctor.ui.home
 
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -20,6 +21,8 @@ import com.project.aidoctor.ApplicationClass
 import com.project.aidoctor.data.entities.Disease
 import com.project.aidoctor.data.entities.Hospital
 import com.project.aidoctor.data.remote.home.HomeListener
+import com.project.aidoctor.databinding.DialogLogoutBinding
+import com.project.aidoctor.databinding.DialogRefreshHospitalBinding
 import com.project.aidoctor.databinding.FragmentHomeBinding
 import com.project.aidoctor.ui.BaseFragment
 import com.project.aidoctor.ui.disease.DiseaseActivity
@@ -43,7 +46,7 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
     var locationManager: LocationManager? = null
     var locationListener: LocationListener? = null
 
-
+    private lateinit var view: DialogRefreshHospitalBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,6 +67,7 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
         hospitalRecyclerAdapter.setItemClickListener(this)
         fileRecyclerAdapter.setItemClickListener(this)
         binding.btnNotification.setOnClickListener(this)
+        binding.btnRefreshHospital.setOnClickListener(this)
 
         return binding.root
     }
@@ -102,6 +106,22 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
         when(v){
             binding.btnRefresh -> viewModel.loadCovid()
             binding.btnNotification -> startNoti()
+            binding.btnRefreshHospital -> refreshDialog()
+        }
+    }
+
+    private fun refreshDialog() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        view = DialogLogoutBinding.inflate(layoutInflater)
+        dialogBuilder.setView(view.root)
+        val alertDialog = dialogBuilder.create()
+        alertDialog.show()
+
+        view.btnNo.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        view.btnOk.setOnClickListener {
+            alertDialog.dismiss()
         }
     }
 
