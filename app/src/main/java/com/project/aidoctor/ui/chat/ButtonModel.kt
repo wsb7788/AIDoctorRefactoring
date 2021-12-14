@@ -7,4 +7,5 @@ import com.project.aidoctor.data.remote.chat.ChatStartResponse
 
 class ButtonModel(val text:String) {
 
+
 }

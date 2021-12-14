@@ -38,9 +38,11 @@ class ChatActivity : BaseActivity(), ChatListener {
         viewModel.start()
 
 
+
+        binding.btnReset.setOnClickListener(this)
         binding.btnSend.setOnClickListener(this)
         binding.btnEmergency.setOnClickListener(this)
-        binding.btnReset.setOnClickListener(this)
+
     }
 
     private fun recyclerInit() {
