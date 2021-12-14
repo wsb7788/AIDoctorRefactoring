@@ -21,6 +21,7 @@
         <activity android:name=".ui.hospital.HospitalActivity"/>
         <activity android:name=".ui.admin.AdminActivity"/>
         <activity android:name=".ui.disease.DiseaseActivity"/>
+        <activity android:name=".ui.profile.ProfileActivity"/>
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

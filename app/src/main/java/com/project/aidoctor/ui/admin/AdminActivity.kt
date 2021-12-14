@@ -11,6 +11,7 @@ import com.project.aidoctor.data.remote.admin.EmUser
 import com.project.aidoctor.databinding.ActivityAdminBinding
 
 import com.project.aidoctor.ui.BaseActivity
+import com.project.aidoctor.ui.profile.ProfileActivity
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,6 +31,19 @@ class AdminActivity : BaseActivity(),AdminListener,EmergencyRecyclerAdapter.OnIt
 
         recyclerInit()
         viewModel.emListLoad()
+        binding.btnSetting.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when(v){
+            binding.btnSetting -> startSetting()
+        }
+    }
+
+    private fun startSetting() {
+        val intent = Intent(this, ProfileActivity::class.java)
+        startActivity(intent)
+
     }
 
     private fun recyclerInit() {
