@@ -112,7 +112,7 @@ class LoginViewModel(private val repository: LoginRepository, private val shared
                 val Id = sharedPreferencesManager.getId()
                 val token = sharedPreferencesManager.getToken()
 
-                val loginResponse = repository.setToken(Id,token)
+                val loginResponse = repository.setToken(Id,token,"aos")
 
                 if(loginResponse.isSuccess){
                     return@main

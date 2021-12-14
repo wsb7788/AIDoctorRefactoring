@@ -35,6 +35,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             //sendNotification(remoteMessage.notification!!.title!!, remoteMessage.notification!!.body!!)
             //sendNotification(remoteMessage.data!!["title"]!!, remoteMessage.data["body"]!!)
         }
+        Log.e("fcm",remoteMessage.data.toString())
         sendNotification(remoteMessage.data!!["title"]!!, remoteMessage.data["body"]!!)
     }
 

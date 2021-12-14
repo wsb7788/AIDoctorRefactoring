@@ -14,7 +14,8 @@ interface LoginService {
     @POST("/fcm/setToken/")
     suspend fun setToken(
         @Field("userId") userId: Int,
-        @Field("token") token: String
+        @Field("token") token: String,
+        @Field("os") os:String
     ): Response<SetTokenResponse>
 
 }

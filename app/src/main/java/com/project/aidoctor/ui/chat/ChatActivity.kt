@@ -3,17 +3,14 @@ package com.project.aidoctor.ui.chat
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.project.aidoctor.ApplicationClass
 import com.project.aidoctor.R
 import com.project.aidoctor.data.remote.chat.ChatListener
 import com.project.aidoctor.data.remote.chat.ChatSendResults
 import com.project.aidoctor.data.remote.chat.ChatStartResults
 import com.project.aidoctor.databinding.ActivityChatBinding
 import com.project.aidoctor.databinding.DialogEmergencyBinding
-import com.project.aidoctor.databinding.DialogLogoutBinding
 import com.project.aidoctor.ui.BaseActivity
 import com.project.aidoctor.util.hideKeyboard
 import com.project.aidoctor.util.toast
