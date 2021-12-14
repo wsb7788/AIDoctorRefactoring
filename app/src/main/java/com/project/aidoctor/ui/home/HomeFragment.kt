@@ -25,6 +25,7 @@ import com.project.aidoctor.ui.BaseFragment
 import com.project.aidoctor.ui.disease.DiseaseActivity
 import com.project.aidoctor.ui.hospital.HospitalActivity
 import com.project.aidoctor.ui.main.MainActivity
+import com.project.aidoctor.ui.notification.NotificationActivity
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -62,6 +63,7 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
 
         hospitalRecyclerAdapter.setItemClickListener(this)
         fileRecyclerAdapter.setItemClickListener(this)
+        binding.btnNotification.setOnClickListener(this)
 
         return binding.root
     }
@@ -99,7 +101,13 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
     override fun onClick(v: View?) {
         when(v){
             binding.btnRefresh -> viewModel.loadCovid()
+            binding.btnNotification -> startNoti()
         }
+    }
+
+    private fun startNoti() {
+        val intent = Intent(requireContext(),NotificationActivity::class.java )
+        startActivity(intent)
     }
 
     private fun recyclerInit() {

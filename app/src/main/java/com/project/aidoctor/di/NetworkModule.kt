@@ -6,15 +6,12 @@ import com.project.aidoctor.data.remote.chat.ChatService
 import com.project.aidoctor.data.remote.chat_admin.ChatAdminService
 import com.project.aidoctor.data.remote.home.HomeService
 import com.project.aidoctor.data.remote.login.LoginService
+import com.project.aidoctor.data.remote.notification.NotificationService
 import com.project.aidoctor.data.remote.profile.ProfileService
-import com.project.aidoctor.util.SharedPreferencesManager
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 
 const val PRODUCTION_URL = "http://13.209.10.30:3000/"
@@ -65,6 +62,8 @@ val networkModule: Module = module {
         retrofit.create(AdminService::class.java)
    fun provideChatAdminService(retrofit: Retrofit): ChatAdminService =
         retrofit.create(ChatAdminService::class.java)
+   fun provideNotificationService(retrofit: Retrofit): NotificationService =
+        retrofit.create(NotificationService::class.java)
 
 /*
     single { provideHeaderInterceptor(get()) }
@@ -81,6 +80,7 @@ val networkModule: Module = module {
     single { provideProfileService(get()) }
     single { provideAdminService(get()) }
     single { provideChatAdminService(get()) }
+    single { provideNotificationService(get()) }
 
 }
 

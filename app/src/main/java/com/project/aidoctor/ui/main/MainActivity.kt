@@ -32,6 +32,7 @@ class MainActivity : BaseActivity(), NavigationBarView.OnItemSelectedListener {
         binding.bnv.menu.getItem(1).isEnabled = false
         binding.bnv.setOnItemSelectedListener(this)
         binding.btnChat.setOnClickListener(this)
+        startChat()
 
     }
 

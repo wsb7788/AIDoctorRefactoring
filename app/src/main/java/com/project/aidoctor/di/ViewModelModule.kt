@@ -7,6 +7,7 @@ import com.project.aidoctor.ui.home.HomeViewModel
 import com.project.aidoctor.ui.hospital.HospitalViewModel
 import com.project.aidoctor.ui.login.LoginViewModel
 import com.project.aidoctor.ui.main.MainViewModel
+import com.project.aidoctor.ui.notification.NotificationViewModel
 import com.project.aidoctor.ui.profile.ProfileViewModel
 import com.project.aidoctor.ui.splash.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -24,4 +25,5 @@ val viewModelModule = module {
     viewModel { HospitalViewModel() }
     viewModel { AdminViewModel(get()) }
     viewModel { ChatAdminViewModel(get()) }
+    viewModel { NotificationViewModel(get(),get()) }
 }
