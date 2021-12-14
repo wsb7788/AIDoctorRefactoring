@@ -3,6 +3,7 @@ package com.project.faily.di
 
 import com.project.aidoctor.data.remote.admin.AdminService
 import com.project.aidoctor.data.remote.chat.ChatService
+import com.project.aidoctor.data.remote.chat_admin.ChatAdminService
 import com.project.aidoctor.data.remote.home.HomeService
 import com.project.aidoctor.data.remote.login.LoginService
 import com.project.aidoctor.data.remote.profile.ProfileService
@@ -62,6 +63,8 @@ val networkModule: Module = module {
         retrofit.create(ProfileService::class.java)
    fun provideAdminService(retrofit: Retrofit): AdminService =
         retrofit.create(AdminService::class.java)
+   fun provideChatAdminService(retrofit: Retrofit): ChatAdminService =
+        retrofit.create(ChatAdminService::class.java)
 
 /*
     single { provideHeaderInterceptor(get()) }
@@ -77,6 +80,7 @@ val networkModule: Module = module {
     single { provideChatService(get()) }
     single { provideProfileService(get()) }
     single { provideAdminService(get()) }
+    single { provideChatAdminService(get()) }
 
 }
 

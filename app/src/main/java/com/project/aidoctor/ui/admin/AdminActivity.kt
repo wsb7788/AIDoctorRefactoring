@@ -11,6 +11,7 @@ import com.project.aidoctor.data.remote.admin.EmUser
 import com.project.aidoctor.databinding.ActivityAdminBinding
 
 import com.project.aidoctor.ui.BaseActivity
+import com.project.aidoctor.ui.chat_admin.ChatAdminActivity
 import com.project.aidoctor.ui.profile.ProfileActivity
 import com.project.aidoctor.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -70,5 +71,9 @@ class AdminActivity : BaseActivity(),AdminListener,EmergencyRecyclerAdapter.OnIt
 
     override fun onClick(v: View, position: Int) {
 
+        val item = emergencyRecyclerAdapter.getItemContent(position)
+        val intent = Intent(this, ChatAdminActivity::class.java)
+        intent.putExtra("item",item)
+        startActivity(intent)
     }
 }

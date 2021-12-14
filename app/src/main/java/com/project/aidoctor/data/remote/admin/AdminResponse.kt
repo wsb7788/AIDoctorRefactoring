@@ -3,6 +3,7 @@ package com.project.aidoctor.data.remote.admin
 import com.project.aidoctor.data.entities.Disease
 import com.project.aidoctor.data.entities.Hospital
 import com.project.aidoctor.data.remote.chat.ChatStartResults
+import java.io.Serializable
 
 
 data class EmListResponse(
@@ -17,4 +18,4 @@ data class asd(
 data class EmUser(
     val USER_ID: Int,
     val USER_USERID: String
-)
+):Serializable
