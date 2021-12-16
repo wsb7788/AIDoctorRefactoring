@@ -21,5 +21,6 @@ class EmergencyViewHolder(val binding: LayoutRecyclerEmListBinding): RecyclerVie
         val aa  = a.format(time)
         binding.tvTime.text= aa
 
+
     }
 }
