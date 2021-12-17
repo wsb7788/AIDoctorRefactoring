@@ -164,7 +164,7 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
     }
 
     override fun onCovidLoad(result: Int) {
-        binding.tvCorona.text = result.toString()
+        binding.tvCorona.text = result.toString() +"명"
     }
 
     override fun onHospitalLoad(results: ArrayList<Hospital>) {
