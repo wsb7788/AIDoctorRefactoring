@@ -59,6 +59,7 @@ class HomeFragment : BaseFragment(), HomeListener,HospitalRecyclerAdapter.OnItem
 
 
 
+
         recyclerInit()
         viewModel.loadDisease()
         viewModel.loadCovid()
