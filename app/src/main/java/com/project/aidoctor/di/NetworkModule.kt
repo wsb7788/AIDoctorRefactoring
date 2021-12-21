@@ -14,7 +14,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-const val PRODUCTION_URL = "http://13.209.10.30:3000/"
+const val PRODUCTION_URL = "http://3.134.232.146:8080/"
 const val TEST_URL = "http://3.134.232.146:8000/"
 private val base_url: String = TEST_URL
 
