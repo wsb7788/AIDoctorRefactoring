@@ -21,7 +21,7 @@ private val base_url: String = TEST_URL
 fun getBaseUrl() = base_url
 
 val networkModule: Module = module {
-/*    fun provideHeaderInterceptor(sharedPreferenceManager: SharedPreferencesManager) =
+    fun provideHeaderInterceptor(sharedPreferenceManager: SharedPreferencesManager) =
         Interceptor { chain ->
             val request = chain.request().newBuilder()
                 .addHeader("jwt_token", sharedPreferenceManager.getJwtToken())
@@ -43,11 +43,11 @@ val networkModule: Module = module {
         .baseUrl(getBaseUrl())
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
-        .build()*/
-    fun provideRetrofit():Retrofit = Retrofit.Builder()
+        .build()
+    /*fun provideRetrofit():Retrofit = Retrofit.Builder()
         .baseUrl(getBaseUrl())
         .addConverterFactory(GsonConverterFactory.create())
-        .build()
+        .build()*/
 
 
 
@@ -66,13 +66,11 @@ val networkModule: Module = module {
    fun provideNotificationService(retrofit: Retrofit): NotificationService =
         retrofit.create(NotificationService::class.java)
 
-/*
     single { provideHeaderInterceptor(get()) }
     single { provideOkHttpClient(get()) }
     single { provideRetrofit(get()) }
-*/
 
-    single { provideRetrofit() }
+   /* single { provideRetrofit() }*/
 
 
     single { provideLoginService(get()) }
