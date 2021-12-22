@@ -27,6 +27,7 @@ val networkModule: Module = module {
                 .addHeader("jwt_token", sharedPreferenceManager.getJwtToken())
                 .build()
 
+
             chain.proceed(request)
         }
     fun provideOkHttpClient(
