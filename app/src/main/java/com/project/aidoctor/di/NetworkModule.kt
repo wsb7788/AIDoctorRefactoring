@@ -8,10 +8,14 @@ import com.project.aidoctor.data.remote.home.HomeService
 import com.project.aidoctor.data.remote.login.LoginService
 import com.project.aidoctor.data.remote.notification.NotificationService
 import com.project.aidoctor.data.remote.profile.ProfileService
+import com.project.aidoctor.util.SharedPreferencesManager
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 const val PRODUCTION_URL = "http://3.134.232.146:8080/"
@@ -21,7 +25,7 @@ private val base_url: String = TEST_URL
 fun getBaseUrl() = base_url
 
 val networkModule: Module = module {
-    fun provideHeaderInterceptor(sharedPreferenceManager: SharedPreferencesManager) =
+/*    fun provideHeaderInterceptor(sharedPreferenceManager: SharedPreferencesManager) =
         Interceptor { chain ->
             val request = chain.request().newBuilder()
                 .addHeader("jwt_token", sharedPreferenceManager.getJwtToken())
@@ -43,11 +47,11 @@ val networkModule: Module = module {
         .baseUrl(getBaseUrl())
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
-        .build()
-    /*fun provideRetrofit():Retrofit = Retrofit.Builder()
+        .build()*/
+    fun provideRetrofit():Retrofit = Retrofit.Builder()
         .baseUrl(getBaseUrl())
         .addConverterFactory(GsonConverterFactory.create())
-        .build()*/
+        .build()
 
 
 
@@ -66,11 +70,11 @@ val networkModule: Module = module {
    fun provideNotificationService(retrofit: Retrofit): NotificationService =
         retrofit.create(NotificationService::class.java)
 
-    single { provideHeaderInterceptor(get()) }
+/*    single { provideHeaderInterceptor(get()) }
     single { provideOkHttpClient(get()) }
-    single { provideRetrofit(get()) }
+    single { provideRetrofit(get()) }*/
 
-   /* single { provideRetrofit() }*/
+    single { provideRetrofit() }
 
 
     single { provideLoginService(get()) }
