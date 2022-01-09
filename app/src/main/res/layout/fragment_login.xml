@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.project.aidoctor.ui.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내 손안의 주치의\n애닥"
+            android:textSize="24sp"
+            android:textColor="@color/primary_2"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/cl_email"
+            app:layout_constraintBottom_toTopOf="@id/cl_email"
+            android:layout_marginBottom="25dp"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/login_border"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintBottom_toTopOf="@id/cl_password"
+            app:layout_constraintStart_toStartOf="@id/cl_password"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageView
+                android:id="@+id/iv_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_id"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="아이디"
+                android:inputType="textEmailAddress"
+                android:nextFocusDown="@id/et_password"
+                android:padding="0dp"
+                android:singleLine="true"
+                android:text="@={viewModel.email}"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_email"
+                app:layout_constraintStart_toEndOf="@id/iv_id"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_email"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_email_delete_off"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/login_border"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_password_reset"
+            app:layout_constraintStart_toStartOf="@+id/button"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageView
+                android:id="@+id/iv_pw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_pw"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:layout_marginStart="10dp"
+                android:padding="0dp"
+                android:singleLine="true"
+                android:text="@={viewModel.pw}"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_password"
+                app:layout_constraintStart_toEndOf="@id/iv_pw"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_password"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_password_see_off"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/btn_password_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="비밀번호 재설정"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintEnd_toEndOf="@id/cl_password" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#cc3b5a89"
+            android:paddingVertical="14dp"
+            android:text="로그인"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아직 계정이 없으신가요?"
+            android:textColor="#282732"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_sign_up"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_sign_up"
+            app:layout_constraintTop_toTopOf="@id/btn_sign_up" />
+
+        <TextView
+            android:id="@+id/btn_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="90dp"
+            android:text="회원가입"
+            android:textColor="@color/primary_2"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/button" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
