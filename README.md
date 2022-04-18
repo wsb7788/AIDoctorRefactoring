@@ -1,6 +1,6 @@
 # AIDoctor-P-Project
 # 가천대학교 2021-2학기 P프로젝트입니다.
-# 솔트룩스에서 제공된 교육용 챗봇 api 연동을 기반으로 한 질병 진단 서비스
+# 솔트룩스에서 제공된 교육용 챗봇 api 연동을 기반으로 한 질병 예측 서비스입니다.
 
 ### Splash
 <img src="https://user-images.githubusercontent.com/73548875/146414551-fa1ea797-0aaf-4303-a9a7-7df2fedab390.jpg" width="200" height="400"/>
